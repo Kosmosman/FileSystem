@@ -11,16 +11,25 @@
 #include <vector>
 #include <filesystem>
 #include <cstdlib>
+#include <numeric>
 
 namespace joaquind {
     namespace fs = std::filesystem;
 
     class FilesystemManager {
     public:
-        FilesystemManager() :current_path_{std::getenv("HOME")} {}
-        std::vector<std::string> GetFilesNameFromFile();
-        void IntoNextDirectory(std::string s) {current_path_.emplace_back(s); };
-        void IntoPrevDirectory() {if (current_path_. size() > 1) current_path_.pop_back(); };
+        FilesystemManager() : current_path_{std::getenv("HOME")} {}
+
+        std::vector<std::string> GetFilesNameFromFile(bool only_name = false);
+
+        std::string GetCurrentPath() {
+            return std::accumulate(current_path_.begin(), current_path_.end(), std::string());
+        };
+
+        void IntoNextDirectory(std::string s) { current_path_.emplace_back(s); };
+
+        void IntoParentDirectory() { if (current_path_.size() > 1) current_path_.pop_back(); };
+
     private:
         std::vector<std::string> current_path_;
     };

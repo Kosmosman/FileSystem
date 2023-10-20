@@ -5,7 +5,7 @@ SET(CMAKE_CXX_STANDARD 20)
 add_library(Model
         model/filesystem_manager.cpp
         model/filesystem_manager.h
-        model/finder.cpp
+        model/finder.tpp
         model/finder.h)
 
 add_executable(FileSystem main.cpp)
