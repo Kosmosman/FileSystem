@@ -8,6 +8,11 @@ add_library(Model
         model/finder.tpp
         model/finder.h)
 
+add_library(Controller controller/controller.h)
+target_link_libraries(Controller PRIVATE Model)
+target_include_directories(Controller PRIVATE Model)
+
 add_executable(FileSystem main.cpp)
-target_link_libraries(FileSystem Model)
+target_link_libraries(FileSystem Model Controller)
 target_include_directories(FileSystem PRIVATE model)
+target_include_directories(FileSystem PRIVATE controller)

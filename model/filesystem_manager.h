@@ -20,7 +20,7 @@ namespace joaquind {
     public:
         FilesystemManager() : current_path_{std::getenv("HOME")} {}
 
-        std::vector<std::string> GetFilesNameFromFile(bool only_name = false);
+        std::vector<std::string> GetFilesNameFromFile(bool with_path);
 
         std::string GetCurrentPath() {
             return std::accumulate(current_path_.begin(), current_path_.end(), std::string());
