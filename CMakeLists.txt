@@ -19,7 +19,9 @@ set(FORMS view/mainwindow.ui)
 add_library(View
         view/mainwindow.cpp
         view/mainwindow.h
-        view/scroll_area.h)
+        view/scroll_area.h
+        view/files_labels.h
+        )
 
 target_link_libraries(View PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 

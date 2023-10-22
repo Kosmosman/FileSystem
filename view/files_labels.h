@@ -12,18 +12,20 @@ namespace joaquind {
 
     class FilesLabels : public QPushButton {
     public:
-        FilesLabels(QString &&text, QWidget *parent) : QPushButton(parent) {
+        FilesLabels(QString &&text, QWidget *parent = nullptr) : QPushButton(parent) {
             setFlat(true);
             setStyleSheet("QPushButton { border: none; background-color: transparent; text-align: left; }"
-                          "QPushButton::before { content: \"∟ \"; padding-right: 10px; }"
+                          "QPushButton::before { content: \"∟ \"; padding-right: 10px; color : white }"
                           "QPushButton { color : white }");
             setText(text);
         }
+
+        ~FilesLabels() override = default;
     };
 
     struct FilesLabelsCreator {
-        static std::unique_ptr<FilesLabels> CreateFileLabel(QString &&s, QWidget *parent = nullptr) {
-            return std::make_unique<FilesLabels>(std::move(s), parent);
+        static std::shared_ptr<FilesLabels> CreateFileLabel(QString &&s, QWidget *parent = nullptr) {
+            return std::make_shared<FilesLabels>(std::move(s), parent);
         }
     };
 
