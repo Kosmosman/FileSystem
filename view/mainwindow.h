@@ -3,8 +3,8 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include "files_labels.h"
-#include "scroll_area.h"
+#include "tree_model.h"
+#include "finder.h"
 
 namespace Ui {
 class mainwindow;
@@ -19,9 +19,14 @@ namespace joaquind {
         ~mainwindow() override;
 
     private:
+        void EnterPressed();
+        void ResetPressed();
+
         Ui::mainwindow *ui;
-        ScrollArea<FilesLabels> scroll_area_;
-        QVBoxLayout layout_;
+        QVBoxLayout layout_{this};
+        TreeModel tree_{this};
+        Finder finder_{this};
+        ResetButton button_{this};
     };
 }
 #endif // MAINWINDOW_H
