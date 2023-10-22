@@ -26,6 +26,7 @@ namespace joaquind {
         }
 
         void SetFilter(const QString &filter) {
+//            expandAll();
             model_.setNameFilters(QList<QString>{filter});
             model_.setNameFilterDisables(false);
         };
