@@ -26,13 +26,13 @@ namespace joaquind {
         }
 
         void SetFilter(const QString &filter) {
-//            expandAll();
-            model_.setNameFilters(QList<QString>{filter});
+            model_.setNameFilters(QStringList{filter});
             model_.setNameFilterDisables(false);
         };
 
         void ResetSearch() {
             model_.setNameFilters(QStringList());
+            model_.setRootPath("");
         }
 
     private:

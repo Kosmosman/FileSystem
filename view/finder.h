@@ -23,7 +23,7 @@ namespace joaquind {
             setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
             setGeometry(0, 0, parent->width(), 20);
             setPlaceholderText(" Input filename...");
-            setStyleSheet("QLineEdit::placeholder { color: grey; }");
+            setStyleSheet("QLineEdit::placeholder { color: grey; background-color : white}");
             layout_.addWidget(this);
             layout_.setAlignment(Qt::AlignBottom | Qt::AlignRight);
         };
