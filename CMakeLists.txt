@@ -13,10 +13,11 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 add_library(View
         view/mainwindow.cpp
         view/mainwindow.h
-        view/tree_model.h view/finder.h)
+        view/tree_model.h
+        view/finder.h)
 
 target_link_libraries(View PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 add_executable(FileSystem main.cpp)
 target_include_directories(FileSystem PRIVATE view)
-target_link_libraries(FileSystem PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(FileSystem PRIVATE View Qt${QT_VERSION_MAJOR}::Widgets)
