@@ -21,12 +21,15 @@ namespace joaquind {
     private:
         void EnterPressed();
         void ResetPressed();
+        void Find();
 
         Ui::mainwindow *ui;
         QVBoxLayout layout_{this};
         TreeModel tree_{this};
         Finder finder_{this};
-        ResetButton button_{this};
+        ResetButton rbutton_{this};
+
+        FindButton fbutton_{this};
     };
 }
 #endif // MAINWINDOW_H

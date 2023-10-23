@@ -6,10 +6,12 @@ namespace joaquind {
     mainwindow::mainwindow(QWidget *parent) : QWidget(parent), ui(new Ui::mainwindow) {
         layout_.addWidget(&tree_);
         layout_.addWidget(&finder_);
-        layout_.addWidget(&button_);
+        layout_.addWidget(reinterpret_cast<QWidget *>(&rbutton_));
+        layout_.addWidget(reinterpret_cast<QWidget *>(&fbutton_));
         tree_.SetHomeDirectory(std::getenv("HOME"));
         connect(&finder_, &QLineEdit::returnPressed, [this]() { EnterPressed(); });
-        connect(&button_, &ResetButton::clicked, [this]() { ResetPressed(); });
+        connect(&rbutton_, &ResetButton::clicked, [this]() { ResetPressed(); });
+        connect(&fbutton_, &FindButton::clicked, [this]() { Find(); });
         ui->setupUi(this);
     }
 
@@ -18,12 +20,10 @@ namespace joaquind {
     }
 
     void mainwindow::EnterPressed() {
-        QString filter;
         if (finder_.text().isEmpty()) {
             tree_.ResetSearch();
         } else {
-            filter = "*" + finder_.text() + "*";
-            tree_.SetFilter(filter);
+            Find();
         }
     }
 
@@ -31,5 +31,10 @@ namespace joaquind {
         finder_.clear();
         tree_.ResetSearch();
         tree_.collapseAll();
+    }
+
+    void mainwindow::Find() {
+        QString filter{"*" + finder_.text() + "*"};
+        tree_.SetFilter(filter);
     }
 }

@@ -17,6 +17,15 @@ namespace joaquind {
         }
     };
 
+    class FindButton : public QPushButton {
+    public:
+        explicit FindButton(QWidget *parent = nullptr) : QPushButton(parent) {
+                setText("Find");
+        };
+    };
+
+
+
     class Finder : public QLineEdit {
     public:
         explicit Finder(QWidget *parent = nullptr) : QLineEdit(parent), widget_(parent), layout_(&widget_) {
