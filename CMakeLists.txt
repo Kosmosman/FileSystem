@@ -19,4 +19,4 @@ target_link_libraries(View PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 add_executable(FileSystem main.cpp)
 target_include_directories(FileSystem PRIVATE view)
-target_link_libraries(FileSystem PRIVATE View Qt6::Widgets)
+target_link_libraries(FileSystem PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
